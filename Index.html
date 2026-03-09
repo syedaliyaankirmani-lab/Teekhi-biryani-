@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teekhi Biryani | Authentic Mughlai</title>
+    
+    <!-- Tailwind CSS (CDN for static site) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1a1a1a',
+                            gold: '#D4AF37',
+                            red: '#C8102E',
+                            cream: '#FDFBF7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-brand-dark text-white font-sans antialiased selection:bg-brand-gold selection:text-brand-dark">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-brand-dark/95 backdrop-blur-xl border-b border-brand-gold/20 py-4 px-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="text-2xl font-display font-black text-brand-gold tracking-tighter">
+                TEEKHI<span class="text-brand-red">BIRYANI</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="tel:9999035966" class="hidden md:flex items-center gap-2 text-brand-gold font-bold hover:text-white transition-colors">
+                    <i class="fa-solid fa-phone"></i> 9999 035 966
+                </a>
+                <button onclick="openCart()" class="relative p-2 text-white hover:text-brand-gold transition-colors">
+                    <i class="fa-solid fa-shopping-cart text-xl"></i>
+                    <span id="cart-count" class="absolute top-0 right-0 bg-brand-gold text-brand-dark text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-brand-dark hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1563379091339-03b21bc4a4f8?q=80&w=1920&auto=format&fit=crop" alt="Biryani Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark via-brand-dark/80 to-brand-dark"></div>
+        </div>
+        <div class="container mx-auto max-w-7xl relative z-10 text-center">
+            <h1 class="text-5xl md:text-8xl font-display font-black leading-[0.9] mb-8">
+                Authentic <br />
+                <span class="text-brand-gold">Teekhi Biryani</span> <br />
+                <span class="text-3xl md:text-5xl text-white/90 mt-4 block font-sans tracking-tight">
+                    Full Taste, Full Masala
+                </span>
+            </h1>
+            <p class="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+                Experience the royal essence of Mughlai spices. Handcrafted with secret blends, served hot and fresh.
+            </p>
+            <a href="#menu" class="inline-block bg-brand-red text-white px-10 py-5 rounded-full font-black text-xl hover:bg-brand-red/90 transition-all shadow-[0_10px_40px_rgba(200,16,46,0.4)] hover:scale-105">
+                Order Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 bg-brand-cream text-brand-dark">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-7xl font-black mb-6 text-brand-red tracking-tighter font-display">
+                    ROYAL <span class="text-brand-gold">SELECTIONS</span>
+                </h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto mb-8 rounded-full"></div>
+            </div>
+            
+            <!-- Menu Grid (Populated by JS) -->
+            <div id="menu-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Items injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-white/10 pt-16 pb-8">
+        <div class="container mx-auto px-4 max-w-7xl text-center">
+            <h2 class="text-3xl font-display font-black text-brand-gold mb-6">TEEKHI BIRYANI</h2>
+            <p class="text-white/60 mb-8 max-w-md mx-auto">The ultimate destination for spice lovers. Authentic Mughlai biryani experience with a kick of spice.</p>
+            <div class="flex justify-center gap-6 mb-8 text-white/80">
+                <a href="tel:9999035966" class="hover:text-brand-gold"><i class="fa-solid fa-phone mr-2"></i>9999 035 966</a>
+                <span><i class="fa-solid fa-map-pin mr-2 text-brand-red"></i>Old Delhi, 110006</span>
+            </div>
+            <p class="text-white/20 text-sm uppercase tracking-widest">© 2024 Teekhi Biryani. Owned by SYED SAHEEM KIRMANI.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer Overlay -->
+    <div id="cart-overlay" onclick="closeCart()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-brand-dark z-50 transform translate-x-full transition-transform duration-300 ease-in-out border-l border-white/10 flex flex-col shadow-2xl">
+        <div class="p-6 border-b border-white/10 flex justify-between items-center bg-brand-dark/95 sticky top-0">
+            <h2 class="text-2xl font-black font-display text-brand-gold">Your Order</h2>
+            <button onclick="closeCart()" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand-red transition-colors">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        
+        <div id="cart-items" class="flex-grow overflow-y-auto p-6">
+            <!-- Cart items injected via JS -->
+        </div>
+        
+        <div class="p-6 border-t border-white/10 bg-brand-dark/95 sticky bottom-0">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-white/60 font-bold">Total Amount</span>
+                <span id="cart-total" class="text-3xl font-black text-brand-gold">₹0</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="checkoutWhatsApp()" class="bg-[#25D366] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#20bd5a] transition-colors shadow-lg shadow-[#25D366]/20">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp
+                </button>
+                <button onclick="checkoutUPI()" class="bg-brand-red text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-brand-red/90 transition-colors shadow-lg shadow-brand-red/20">
+                    <i class="fa-solid fa-qrcode text-xl"></i> Pay via UPI
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919999035966?text=Hi%20Teekhi%20Biryani!%20I%20would%20like%20to%20place%20an%20order." target="_blank" class="fixed bottom-6 left-6 z-40 bg-[#25D366] text-white w-14 h-14 rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform flex items-center justify-center group">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+</html>
